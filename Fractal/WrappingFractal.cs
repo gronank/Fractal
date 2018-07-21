@@ -8,12 +8,11 @@ namespace Fractal
 {
     public class WrappingFractal
     {
-        private static CoordRandom random=new CoordRandom();
-        //private static int width;
-        //private static int height;
+        private static uint initSeed = 0;
         public static void Initialize(int seed)
         {
-            random = new CoordRandom((uint)seed);
+            initSeed = (uint)seed;
+
         }
         /// <summary>
         /// Constructs a fractal with options for wrapping
@@ -24,8 +23,22 @@ namespace Fractal
         /// <param name="options">Options for the lenth scale of the fractal</param>
         /// <param name="wrapMode">Options for fractal wraping</param>
         /// <returns></returns>
-        public static float[,] fractal(int n, int h, int w, FractalOptions options,FractalWrapMode wrapMode)
+        public static float[,] fractal(int n, int h, int w, FractalOptions options,FractalWrapMode wrapMode, uint seed = 0)
         {
+            CoordRandom random;
+            if(initSeed != 0)
+            {
+                random = new CoordRandom(initSeed);
+            }
+            else if (seed != 0)
+            {
+                random = new CoordRandom(seed);
+            }
+            else
+            {
+                random = new CoordRandom();
+            }
+
             float[,] output = new float[n * w + 1, n * h + 1];
             for (var i = 0; i < n * w + 1; i++)
             {
