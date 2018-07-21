@@ -53,7 +53,7 @@ namespace Fractal
             if (wrapMode == FractalWrapMode.NoWrap) width = n * w+1;
             int height = n * h + 1;
             if (wrapMode == FractalWrapMode.Doughnut) height = n * h;
-            random.setWrapLimit(width, height);
+            random.SetWrapLimit(width, height);
 
             
 
@@ -224,7 +224,7 @@ namespace Fractal
     */
         private static float randomFloat(int x, int y)
         {
-            return random.randFloat(x, y);
+            return random.RandFloat(x, y);
         }
     }
     public enum FractalWrapMode
