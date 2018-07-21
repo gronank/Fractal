@@ -9,6 +9,7 @@ namespace Fractal
     public class WrappingFractal
     {
         private static uint initSeed = 0;
+        private static CoordRandom random;
         public static void Initialize(int seed)
         {
             initSeed = (uint)seed;
@@ -25,7 +26,7 @@ namespace Fractal
         /// <returns></returns>
         public static float[,] fractal(int n, int h, int w, FractalOptions options,FractalWrapMode wrapMode, uint seed = 0)
         {
-            CoordRandom random;
+            
             if(initSeed != 0)
             {
                 random = new CoordRandom(initSeed);
